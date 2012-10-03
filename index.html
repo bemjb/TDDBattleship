@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Battleship Example</title>
+</head>
+<body>
+  <div id="qunit"></div>
+  <script src="Battleship.js"></script>
+  <script src="Game.js"></script>
+  <script src="Player.js"></script>
+  <script src="Grid.js"></script>
+  <script src="Ship.js"></script>
+  <script>
+
+    window.onload = function () {
+        var grid = new Battleship.Grid(10, 10);
+        grid.placeShip({
+            position: {x: 2, y: 3},
+            endPosition: {x: 2, y: 3}
+        });
+        grid.render();
+    }
+      
+      
+  </script>
+    <svg id="grid" width="500" height="500" viewBox="0 0 10 10">
+        <g id="pat">
+            <rect fill="aqua" width="2" height="2"/>
+            <rect fill="blue" width="1" height="1"/>
+            <rect fill="blue" x="1" y="1" width="1" height="1"/>
+        </g>
+        <use xlink:href="#pat" x=""/>
+        <use xlink:href="#pat" x="2"/>
+        <use xlink:href="#pat" x="4"/>
+        <use xlink:href="#pat" x="6"/>
+        <use xlink:href="#pat" x="8"/>
+        <use xlink:href="#pat" y="2" x=""/>
+        <use xlink:href="#pat" y="2" x="2"/>
+        <use xlink:href="#pat" y="2" x="4"/>
+        <use xlink:href="#pat" y="2" x="6"/>
+        <use xlink:href="#pat" y="2" x="8"/>
+        <use xlink:href="#pat" y="4" x=""/>
+        <use xlink:href="#pat" y="4" x="2"/>
+        <use xlink:href="#pat" y="4" x="4"/>
+        <use xlink:href="#pat" y="4" x="6"/>
+        <use xlink:href="#pat" y="4" x="8"/>
+        <use xlink:href="#pat" y="6" x=""/>
+        <use xlink:href="#pat" y="6" x="2"/>
+        <use xlink:href="#pat" y="6" x="4"/>
+        <use xlink:href="#pat" y="6" x="6"/>
+        <use xlink:href="#pat" y="6" x="8"/>
+        <use xlink:href="#pat" y="8" x=""/>
+        <use xlink:href="#pat" y="8" x="2"/>
+        <use xlink:href="#pat" y="8" x="4"/>
+        <use xlink:href="#pat" y="8" x="6"/>
+        <use xlink:href="#pat" y="8" x="8"/>
+    </svg>
+</body>
+</html>

@@ -32,6 +32,19 @@ Battleship.Grid = (function () {
         });
         return result;
     };
+                   
+   Grid.prototype.render = function () {
+
+        this.ships.forEach(function (ship) {
+            var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", ship.position.x);
+            rect.setAttribute("y", ship.position.y);
+            rect.setAttribute("width", "1");
+            rect.setAttribute("height", "1");
+            rect.setAttribute("fill", "gray");
+            document.getElementById("grid").appendChild(rect);
+        });
+   }
 
     return Grid;
 })();
