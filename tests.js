@@ -89,4 +89,35 @@
         ship.endPosition = { x: 11, y: 1 };
         ok(!grid.placeShip(ship), "Ship could not be placed");
     });
+    test("Place more than one ship", function () {
+        var ship = new MockShip();
+        ship.position = { x: 10, y: 10 };
+        ship.endPosition = { x: 10, y: 10 };
+        var ship2 = new MockShip();
+
+        ok(grid.placeShip(ship), "Ship was successfully placed");
+        ok(grid.placeShip(ship2), "Ship was successfully placed");
+
+        equal(grid._queryTile({ x: 10, y: 10 }), ship);
+        equal(grid._queryTile({ x: 1, y: 1 }), ship2);
+    });
+    test("Reject placing ships on top of each other", function () {
+        var ship = new MockShip();
+        var ship2 = new MockShip();
+
+        ok(grid.placeShip(ship), "Ship was successfully placed");
+        ok(!grid.placeShip(ship), "Ship could not be placed on top of another");
+    });
+})();
+
+(function () {
+    module("Ship Tests", {
+        setup: function () {
+        },
+        teardown: function () {
+        }
+    });
+    test("Compute endPosition", function () {
+        expect(0);
+    });
 })();

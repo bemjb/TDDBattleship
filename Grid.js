@@ -7,7 +7,8 @@ Battleship.Grid = (function () {
 
     Grid.prototype.placeShip = function (ship) {
         if (this._positionIsOutsideOfGrid(ship.position) ||
-            this._positionIsOutsideOfGrid(ship.endPosition)) {
+            this._positionIsOutsideOfGrid(ship.endPosition) ||
+            this._queryTile(ship.position)) {
             return false;
         }
         else {
