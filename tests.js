@@ -67,20 +67,14 @@
         }
     });
     test("Add ship to grid", function () {
-        var ship = {
-            size: 1,
-            position: { x: 1, y: 1 },
-            orientation: Battleship.Ship.Orientation.Vertical
-        };
+        var ship = new MockShip();
         ok(grid.placeShip(ship), "Ship was successfully placed");
         equal(grid._queryTile({ x: 1, y: 1 }), ship);
     });
-    test("Add ship outside of grid", function () {
-        var ship = {
-            size: 1,
-            position: { x: 11, y: -1 },
-            orientation: Battleship.Ship.Orientation.Vertical
-        };
+    test("Reject ship outside of grid", function () {
+        var ship = new MockShip();
+        ship.position = { x: 11, y: -1 };
+        ship.endPosition = { x: 11, y: -1 };
         ok(!grid.placeShip(ship), "Ship could not be placed");
     });
     test("Ensure position is in grid", function () {
@@ -88,5 +82,11 @@
         ok(grid._positionIsOutsideOfGrid({ x: 11, y: 11}), "above upper bound");
         ok(!grid._positionIsOutsideOfGrid({ x: 1, y: 1}), "lower bound");
         ok(!grid._positionIsOutsideOfGrid({ x: 10, y: 10}), "upper bound");
+    });
+    test("Reject ship with end outside of grid", function () {
+        var ship = new MockShip();
+        ship.position = { x: 1, y: 1 };
+        ship.endPosition = { x: 11, y: 1 };
+        ok(!grid.placeShip(ship), "Ship could not be placed");
     });
 })();
