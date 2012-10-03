@@ -48,6 +48,9 @@
             player = null;
         }
     });
+    test("Player name is set", function () {
+        equal(player.name, "Player 1");
+    });
     test("Player starts with active ships", function () {
         ok(player.hasActiveShips());
     });
