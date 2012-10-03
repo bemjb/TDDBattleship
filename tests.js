@@ -69,7 +69,7 @@
     test("Add ship to grid", function () {
         var ship = new MockShip();
         ok(grid.placeShip(ship), "Ship was successfully placed");
-        equal(grid._queryTile({ x: 1, y: 1 }), ship);
+        equal(grid._shipAtPosition({ x: 1, y: 1 }), ship);
     });
     test("Reject ship outside of grid", function () {
         var ship = new MockShip();
@@ -98,8 +98,8 @@
         ok(grid.placeShip(ship), "Ship was successfully placed");
         ok(grid.placeShip(ship2), "Ship was successfully placed");
 
-        equal(grid._queryTile({ x: 10, y: 10 }), ship);
-        equal(grid._queryTile({ x: 1, y: 1 }), ship2);
+        equal(grid._shipAtPosition({ x: 10, y: 10 }), ship);
+        equal(grid._shipAtPosition({ x: 1, y: 1 }), ship2);
     });
     test("Reject placing ships on top of each other", function () {
         var ship = new MockShip();

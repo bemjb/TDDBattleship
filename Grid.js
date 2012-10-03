@@ -8,7 +8,7 @@ Battleship.Grid = (function () {
     Grid.prototype.placeShip = function (ship) {
         if (this._positionIsOutsideOfGrid(ship.position) ||
             this._positionIsOutsideOfGrid(ship.endPosition) ||
-            this._queryTile(ship.position)) {
+            this._shipAtPosition(ship.position)) {
             return false;
         }
         else {
@@ -23,7 +23,7 @@ Battleship.Grid = (function () {
         return positionIsOutsideOfGrid;
     };
 
-    Grid.prototype._queryTile = function (position) {
+    Grid.prototype._shipAtPosition = function (position) {
         var result = null;
         this.ships.forEach(function (ship) {
             if (ship.position.x === position.x && ship.position.y === position.y) {
