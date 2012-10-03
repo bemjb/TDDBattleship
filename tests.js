@@ -117,7 +117,12 @@
         teardown: function () {
         }
     });
-    test("Compute endPosition", function () {
-        expect(0);
+    test("Compute vertical endPosition", function () {
+        var ship = new Battleship.Ship({ x: 1, y: 1 }, 3, Battleship.Ship.Orientation.Vertical);
+        deepEqual(ship.endPosition, { x: 1, y: 3 });
+    });
+    test("Compute horizontal endPosition", function () {
+        var ship = new Battleship.Ship({ x: 1, y: 1 }, 3, Battleship.Ship.Orientation.Horizontal);
+        deepEqual(ship.endPosition, { x: 3, y: 1 });
     });
 })();
