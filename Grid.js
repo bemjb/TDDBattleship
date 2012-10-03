@@ -28,19 +28,6 @@ Battleship.Grid = (function () {
             if (ship.position.x === position.x && ship.position.y === position.y) {
                 result = ship;
             }
-            /*
-            if (ship.position.x <= position.x && ship.position.y <= position.y) {
-                if (ship.orientation === Battleship.Ship.Orientation.Vertical) {
-                    if (ship.position.y - ship.size >= position.y) {
-                        result = ship;
-                    }
-                }
-                else { // (ship.orientation === Battleship.Ship.Orientation.Horizontal)
-                    if (ship.position.x + ship.size >= position.x) {
-                        result = ship;
-                    }
-                }
-            }*/
         });
         return result;
     };
