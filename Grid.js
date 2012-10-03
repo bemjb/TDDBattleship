@@ -6,8 +6,19 @@ Battleship.Grid = (function () {
     }
 
     Grid.prototype.placeShip = function (ship) {
-        this.ships.push(ship);
-        return true;
+        if (this._positionIsOutsideOfGrid(ship.position)) {
+            return false;
+        }
+        else {
+            this.ships.push(ship);
+            return true;
+        }
+    };
+
+    Grid.prototype._positionIsOutsideOfGrid = function (position) {
+        var positionIsOutsideOfGrid = position.x > this.width || position.y > this.height ||
+                                        position.x < 1 || position.y < 1;
+        return positionIsOutsideOfGrid;
     };
 
     Grid.prototype._queryTile = function (position) {

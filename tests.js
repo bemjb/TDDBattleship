@@ -75,4 +75,18 @@
         ok(grid.placeShip(ship), "Ship was successfully placed");
         equal(grid._queryTile({ x: 1, y: 1 }), ship);
     });
+    test("Add ship outside of grid", function () {
+        var ship = {
+            size: 1,
+            position: { x: 11, y: -1 },
+            orientation: Battleship.Ship.Orientation.Vertical
+        };
+        ok(!grid.placeShip(ship), "Ship could not be placed");
+    });
+    test("Ensure position is in grid", function () {
+        ok(grid._positionIsOutsideOfGrid({ x: 0, y: 0}), "below lower bound");
+        ok(grid._positionIsOutsideOfGrid({ x: 11, y: 11}), "above upper bound");
+        ok(!grid._positionIsOutsideOfGrid({ x: 1, y: 1}), "lower bound");
+        ok(!grid._positionIsOutsideOfGrid({ x: 10, y: 10}), "upper bound");
+    });
 })();
