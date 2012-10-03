@@ -55,3 +55,24 @@
         ok(player.hasActiveShips());
     });
 })();
+
+(function () {
+    var grid;
+    module("Grid Tests", {
+        setup: function () {
+            grid = new Battleship.Grid(10, 10);
+        },
+        teardown: function () {
+            grid = null;
+        }
+    });
+    test("Add ship to grid", function () {
+        var ship = {
+            size: 1,
+            position: { x: 1, y: 1 },
+            orientation: Battleship.Ship.Orientation.Vertical
+        };
+        ok(grid.placeShip(ship), "Ship was successfully placed");
+        equal(grid._queryTile({ x: 1, y: 1 }), ship);
+    });
+})();
