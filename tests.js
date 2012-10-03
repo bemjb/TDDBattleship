@@ -37,3 +37,18 @@
         equal(game.state, Battleship.Game.State.GameOver, "Check state");
     });
 })();
+
+(function () {
+    var player;
+    module("Player Tests", {
+        setup: function () {
+            player = new Battleship.Player("Player 1");
+        },
+        teardown: function () {
+            player = null;
+        }
+    });
+    test("Player starts with active ships", function () {
+        ok(player.hasActiveShips());
+    });
+})();
